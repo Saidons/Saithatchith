@@ -15,14 +15,25 @@ The main site uses a WhatsApp `wa.me` link for direct contact. The Node server i
 
 ## Publish and get a website link
 
-This project includes a Render deployment blueprint in `render.yaml`.
+This project includes a Render deployment blueprint in `render.yaml` and a GitHub Actions test workflow in `.github/workflows/ci.yml`.
 
-1. Push the project to a GitHub repository.
-2. Sign in to Render and choose **New → Blueprint**, then connect that repository.
-3. Review and create the web service. The blueprint uses a paid Starter service and a persistent disk so approved customer reviews survive redeploys. Check Render's current pricing before confirming.
-4. After the first deploy succeeds, Render shows the live URL in the service dashboard (typically `https://vel-aari-designer.onrender.com`). Use that actual dashboard URL; the exact subdomain may vary.
-5. Optionally add a custom domain in Render's settings and follow its DNS/HTTPS setup.
-6. Open the live site and test navigation, the WhatsApp chat link, review submission, and `/studio-admin.html`.
+### First publish
+
+1. Confirm the latest project changes are pushed to the GitHub repository.
+2. Sign in to Render and choose **New → Blueprint**.
+3. Connect the GitHub account and choose `Saidons/Saithatchith`.
+4. Review the blueprint's service, Starter plan, and 1 GB persistent disk. This configuration is paid; check the current price in Render before approving.
+5. Before creating the service, set a strong private `ADMIN_TOKEN` in Render's environment settings (at least 32 characters). Do not paste it into the repository.
+6. Click **Apply** / **Create Blueprint**. Render installs dependencies and starts the app.
+7. When the deploy is marked **Live**, use the public `onrender.com` URL shown in the service dashboard. The exact subdomain is assigned by Render; it cannot be predicted in advance.
+8. Open that URL on a phone and computer. Test the WhatsApp button, form-to-WhatsApp message, `/healthz`, customer review submission, and `/studio-admin.html` moderation login.
+9. Optionally add a custom domain from the Render service settings and follow its DNS and HTTPS instructions.
+
+### Publish future updates
+
+- Push or merge changes to the GitHub `main` branch. Render is configured with `autoDeploy: true`, so it automatically builds and deploys new commits.
+- GitHub Actions runs `npm test` on pushes and pull requests to `main`. Review the Actions tab for the test result; do not merge if checks fail.
+- Render deploys from the connected branch independently of GitHub Actions checks. Review the commit and build log in Render after each push.
 
 I can't publish it or create the public URL from this workspace because deployment requires access to your hosting account and the repository must be connected there.
 

@@ -3,7 +3,9 @@
 The customer enquiry form opens a regular WhatsApp conversation with the customer’s details prefilled. Normal WhatsApp links cannot attach local files automatically; the customer must attach the selected photo in WhatsApp and tap **Send**.
 
 - [ ] Install Node.js 20+ and dependencies; run `npm test` and `npm audit --omit=dev`.
-- [ ] Connect this repository to Render using `render.yaml` (Blueprint). Review current paid Starter and persistent disk pricing before creating the service.
+- [ ] Connect `Saidons/Saithatchith` to Render using **New → Blueprint** and `render.yaml`. Review current paid Starter and 1 GB persistent disk pricing before creating the service.
+- [ ] Set a strong private `ADMIN_TOKEN` in Render's environment settings before applying the Blueprint.
+- [ ] Confirm the GitHub Actions `Verify website` workflow passes. Note: Render auto-deploys `main` independently, so check build logs too.
 - [ ] After deployment, copy the actual HTTPS URL shown in the Render dashboard and open it on phone and desktop.
 - [ ] Copy `.env.example` to the hosting environment and set a unique `ADMIN_TOKEN` with at least 32 random characters.
 - [ ] Verify the WhatsApp contact is `+91 95002 04337`.

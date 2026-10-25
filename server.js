@@ -64,6 +64,10 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '8kb' }));
 app.use(express.static(__dirname, { dotfiles: 'deny', index: 'index.html', maxAge: '1h' }));
 
+app.get('/healthz', (_req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.get('/api/reviews', async (_req, res) => {
   try {
     const reviews = (await readReviews())
