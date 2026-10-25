@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Studio review moderation — Vel Aari Designer</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{min-height:100vh}.admin-wrap{max-width:900px;margin:0 auto;padding:54px 24px}.admin-wrap h1{font:500 42px/1.15 var(--serif);margin:0 0 12px}.admin-intro,.admin-note{font-size:13px;color:var(--muted);max-width:700px}.admin-login{display:flex;gap:10px;max-width:600px;margin:25px 0}.admin-login input{flex:1;min-width:0;padding:12px;border:1px solid var(--line);background:var(--white)}.admin-orders{display:grid;gap:14px;margin-top:24px}.admin-order{background:var(--white);border:1px solid var(--line);padding:20px}.admin-order-head{display:flex;justify-content:space-between;gap:15px;align-items:start}.admin-order h2{font:500 21px var(--serif);margin:0 0 5px}.admin-order p{font-size:12px;color:var(--muted);margin:5px 0}.admin-order .admin-state{font-weight:700;color:var(--plum)}.admin-order .button{margin-top:12px}.admin-message{font-size:12px;color:var(--plum);margin-top:15px}.admin-message.error{color:#a33434}.admin-empty{padding:20px;border:1px dashed var(--line);color:var(--muted);font-size:13px}@media(max-width:600px){.admin-wrap{padding:35px 18px}.admin-wrap h1{font-size:34px}.admin-login{flex-direction:column}.admin-order-head{display:block}}
+  </style>
+  <script src="studio-admin.js" defer></script>
+</head>
+<body>
+  <main class="admin-wrap">
+    <p class="eyebrow">PRIVATE STUDIO AREA</p>
+    <h1>Studio review moderation</h1>
+    <p class="admin-intro">Review customer ratings and approve suitable feedback before it appears on the website.</p>
+    <p class="admin-note">Use this page only over HTTPS on a trusted device. The studio token is held in this page’s memory and is not saved.</p>
+    <p class="admin-note">App developed by C. Sai Thatchith · Designer: C. Jeyamalathi</p>
+    <form class="admin-login" id="admin-login">
+      <input id="admin-token" type="password" autocomplete="current-password" placeholder="Studio admin token" aria-label="Studio admin token" required>
+      <button class="button button-dark" type="submit">Load reviews</button>
+    </form>
+    <p class="admin-message" id="admin-message" role="status" aria-live="polite"></p>
+    <h2 class="admin-section-title">Customer ratings</h2>
+    <p class="admin-section-note">Approve suitable feedback to publish it on the website. Rejected ratings remain private.</p>
+    <section class="admin-orders" id="admin-reviews" aria-label="Customer review moderation queue"></section>
+  </main>
+</body>
+</html>

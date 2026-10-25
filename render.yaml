@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: vel-aari-designer
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    disk:
+      name: vel-aari-private-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIRECTORY
+        value: /var/data
+      - key: ADMIN_TOKEN
+        generateValue: true
